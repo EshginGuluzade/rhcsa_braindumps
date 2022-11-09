@@ -11,17 +11,16 @@ crontab -e -u eshgin
 35 21 * * * /bin/echo guluzade
 ```
 
-## Question 1
-Configure the permissions of /var/tmp/fstab 
-Copy the file /etc/fstab to /var/tmp/fstab. 
-Configure the permissions of /var/tmp/fstab so that: 
-the file /var/tmp/fstab is owned by the root user. 
-the file /var/tmp/fstab belongs to the group root. 
-the file /var/tmp/fstab should not be executable by anyone. 
-the user eshgin is able to read and write /var/tmp/fstab. 
-the user tahir can neither write nor read /var/tmp/fstab. 
-all other users (current or future) have the ability to read /var/tmp/fstab. 
-
+## Question 2
+Configure the permissions of /var/tmp/fstab </br>
+Copy the file /etc/fstab to /var/tmp/fstab. </br>
+Configure the permissions of /var/tmp/fstab so that: </br>
+the file /var/tmp/fstab is owned by the root user. </br>
+the file /var/tmp/fstab belongs to the group root. </br>
+the file /var/tmp/fstab should not be executable by anyone. </br>
+the user eshgin is able to read and write /var/tmp/fstab. </br>
+the user tahir can neither write nor read /var/tmp/fstab. </br>
+all other users (current or future) have the ability to read /var/tmp/fstab. </br>
 
 ### Solution
 1. Copy file to /var/tmp
