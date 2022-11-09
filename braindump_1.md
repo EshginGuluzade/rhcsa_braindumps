@@ -47,3 +47,13 @@ setfacl -m u:tahir:- /var/tmp/fstab
 ``` bash
 -rw-rw-r--+ 1 root root 540 Nov  9 22:18 /var/tmp/fstab
 ```
+
+## Question 3
+Create the following users, groups, and group memberships: </br>
+A group named adminuser. </br>
+A user natasha who belongs to adminuser as a secondary group </br>
+A user harry who also belongs to adminuser as a secondary group. </br>
+A user sarah who does not have access to an interactive shell on the system, and who is not a member of adminuser </br>
+natasha, harry, and sarah should all have the password of redhat. </br>
+
+### Solution
