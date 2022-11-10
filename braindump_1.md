@@ -1,3 +1,5 @@
+**NOTE:** All questions are performed in *CentOS Stream 9*
+
 ## Question 1
 Set cronjob for user eshgin to do /bin/echo guluzade at 14:23. 
 
@@ -95,11 +97,14 @@ uid=1006(nihad) gid=1008(nihad) groups=1008(nihad
 ```
 
 ## Question 4
-Create the following users, groups, and group memberships: </br>
-A group named admin. </br>
-A user eshgin who belongs to admin as a secondary group </br>
-A user tahir who also belongs to admin as a secondary group. </br>
-A user nihad who does not have access to an interactive shell on the system, and who is not a member of adminu </br>
-eshgin, tahir, and nihad should all have the password of rhcsa. </br>
+Resize the logical volume vo and its filesystem to 290 MB. </br>
+Make sure that the filesystem contents remain intact. </br>
+Note: Partitions are seldom exactly the same size requested, so a size within the range of 260 MB to 320 MiB is acceptable. 
+
+### Solution
+
+## Question 5
+A YUM repository has been provided at http://serverdomain11.example.com/pub/x86_64/Server. </br>
+Configure your system to use this location as a default repository. </br>
 
 ### Solution
