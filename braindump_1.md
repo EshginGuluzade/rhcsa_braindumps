@@ -108,3 +108,102 @@ A YUM repository has been provided at http://serverdomain11.example.com/pub/x86_
 Configure your system to use this location as a default repository. </br>
 
 ### Solution
+
+## Question 6
+SELinux must be running in the Enforcing mode. </br> 
+
+### Solution
+1. As a default you should get following result when you run this command `sestatus` </br>
+``` bash
+Current mode:                   enforcing
+Mode from config file:          enforcing
+```
+
+## Question 7
+Download the document from ftp://instructor.example.com/pub/testfile </br> 
+find all lines containing [abcde] and redirect to /mnt/answer document </br>
+then rearrange the order according the original content.</br>
+
+### Solution
+1. Let's create testfile first and copy below content to that file </br>
+``` bash
+vim testfile
+```
+Content: </br>
+``` bash
+a
+ab
+abc
+abcd
+abcde
+aabcdee
+qabcdtre
+opabcdrtt
+abcdtrefdg
+abcdekllabcd
+poljdjabcdhhe
+jkoilabcdeeeee
+ebacdgjhjabcdei
+polkjabcdklklkap
+```
+2. Use grep to find lines containing `abcde` and redirect to /mnt/answer </br>
+``` bash
+grep abcde testfile > /mnt/answer
+```
+
+## Question 8
+Create a volume group, and set the size is 500M </br> the size of single PE is 16M </br> 
+Create logical volume named Iv0 in this volume group </br> 
+set size is 20 PE, make it as ext3 file system, and mounted automatically under data </br>
+
+### Solution
+1. Let's create testfile first and copy below content to that file </br>
+``` bash
+vim testfile
+```
+
+## Question 9
+Configure your web services </br> 
+download from http://instructor.example.com/pub/serverX.html </br> 
+And the services must be still running after system rebooting. </br>
+
+### Solution
+1. Install apache httpd </br>
+``` bash
+yum install httpd -y
+```
+2. Go to /var/www/html and install html page, then rename file to index.html</br>
+``` bash
+cd /var/www/html
+curl -O https://httpd.apache.org/ABOUT_APACHE.html
+mv ABOUT_APACHE.html index.html
+```
+3. Enable httpd and check status, it should be active and running </br>
+``` bash
+systemctl enable --now httpd
+systemctl status httpd
+```
+
+## Question 10
+Configure the FTP service in your system </br> 
+allow remote access to anonymous login and download the program by this service </br> 
+Service is still running after system rebooting </br>
+
+### Solution
+1. Install vsftpd service </br>
+``` bash
+yum install vsftpd -y
+```
+2. Set `anonymous_enable=YES` in /etc/vsftpd/vsftpd.conf </br>
+``` bash
+vim /etc/vsftpd/vsftpd.conf
+```
+3. You should get following result if you run this command `grep anonymous_enable /etc/vsftpd/vsftpd.conf` </br>
+``` bash
+anonymous_enable=YES
+```
+4. Enable httpd and check status, it should be active and running </br>` </br>
+``` bash
+systemctl enable --now vsftpd
+systemctl status vsftpd
+```
