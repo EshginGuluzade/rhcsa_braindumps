@@ -1,7 +1,7 @@
 **NOTE:** All questions are performed in *CentOS Stream 9*
 
 ## Question 1
-Set cronjob for user eshgin to do /bin/echo guluzade at 14:23. 
+Set cronjob for user eshgin to do /bin/echo guluzade at 21:35. 
 
 ### Solution
 Note: We assume that user *eshgin* is already created
@@ -202,8 +202,99 @@ vim /etc/vsftpd/vsftpd.conf
 ``` bash
 anonymous_enable=YES
 ```
-4. Enable httpd and check status, it should be active and running </br>` </br>
+4. Enable httpd and check status, it should be active and running </br>
 ``` bash
 systemctl enable --now vsftpd
 systemctl status vsftpd
+```
+
+## Question 11
+Note: We assume users *eshgin* and *tahir* are already created
+Copy /etc/fstab document to /var/tmp directory. </br>
+According the following requirements to configure the permission of this document. </br> 
+The owner of this document must be root. </br>
+This document belongs to root group. </br>
+User eshgin have read and write permissions for this document. </br>
+User tahir have read and execute permissions for this document. </br>
+Create user named nihad, set uid is 1000. </br>
+nihad have read and write permissions for this document. </br>
+All users has read permission for this document in the system. </br>
+
+### Solution
+1. Copy /file to /var/tmp directory. </br>
+``` bash
+cp /etc/fstab /var/tmp/fstab
+```
+2. Set owner and group as root </br>
+``` bash
+chown root:root /var/tmp/fstab
+```
+3. User eshgin have read and write permissions for this document </br>
+``` bash
+setfacl -m u:eshgin:rw /var/tmp/fstab
+```
+4. User tahir have read and execute permissions for this document. </br>
+``` bash
+setfacl -m u:tahir:rx /var/tmp/fstab
+```
+5. Create user named nihad, set uid is 1000. </br>
+``` bash
+seradd nihad -o -u 1000
+```
+6. nihad has read and write permissions for this document. </br>
+``` bash
+setfacl -m u:nihad:rw /var/tmp/fstab
+```
+7. All users have read permission for this document in the system. </br>
+``` bash
+chmod a+r /var/tmp/fstab
+```
+8. if you run `ls -l /var/tmp/fstab`, you should get following result
+``` bash
+-rw-rwxr--+ 1 root root 534 Nov 13 20:21 /var/tmp/fstab
+```
+
+## Question 12
+Create a collaborative directory /home/admins with the following characteristics: </br>
+Group ownership of /home/admins is admins </br>
+The directory should be readable, writable, and accessible to members of admins, but not to any other user.</br> 
+(It is understood that root has access to all files and directories on the system.) </br>
+Files created in /home/admins automatically have group ownership set to the admins group </br>
+
+### Solution
+1. Create directory and group </br>
+``` bash
+mkdir /home/admins
+groupadd admins
+```
+2. Group ownership of /home/admins is admins </br>
+``` bash
+chgrp -R admins /home/admins/
+```
+3. The directory should be readable, writable, and accessible to members of admins, but not to any other user.</br>
+``` bash
+chmod g+w,o-rw /home/admins/
+```
+4. Files created in /home/admins automatically have group ownership set to the admins group </br>
+``` bash
+chmod g+s /home/admins/
+```
+5. if you run `ls -l /home/admins -d`, you should get following result
+``` bash
+drwxrws--x. 2 root admins 18 Nov 13 21:29 /home/admins
+```
+
+## Question 13
+User eshgin must configure a task. </br>
+Requirement: The local time at 22:05 every day echo "Hello World.". </br>
+
+### Solution
+Note: We assume that user *eshgin* is already created
+1. Open crontab file for user eshgin
+``` bash
+crontab -e -u eshgin
+```
+2. Paste this content to crontab file
+``` bash
+05 22 * * * /bin/echo "Hello World"
 ```
